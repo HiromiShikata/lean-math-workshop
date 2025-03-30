@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+    <rect x="0" y="0" width="400" height="300" fill="#f8f9fa"></rect>
+    <circle cx="200" cy="150" r="80" fill="#9ae6b4" fill-opacity="0.6"></circle>
+    <circle cx="200" cy="150" r="40" fill="#4299e1" fill-opacity="0.6"></circle>
+    <text x="200" y="80" text-anchor="middle" font-size="16">集合B</text>
+    <text x="200" y="150" text-anchor="middle" font-size="14">集合A</text>
+    <text x="200" y="170" text-anchor="middle" font-size="12">φ, ψ</text>
+    <text x="200" y="110" text-anchor="middle" font-size="12">φ∧ψ, φ∧φ∧ψ</text>
+    <text x="200" y="240" text-anchor="middle" font-size="14">⊥</text>
+    <!--  https://claude.site/artifacts/cd14a825-1ab7-4e0b-ac17-cb08c6b3f476 -->
+</svg>
