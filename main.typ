@@ -76,20 +76,36 @@ B は Deductive Closure
 
 === Step 1: Assume ¬χ in Set of Axioms
 #figure(
-  image("./A-B-X_contradiction_assumption.svg", width: 50%),
+  image("./A-B-X_contradiction_step1.svg", width: 50%),
 )
-- ¬χを Set of Axioms に付け加える
-- 
-
+- ¬χ を Set of Axioms に付け加える
+/* #TODO:
+ Venn 図と導出図の対応関係をそれぞれのstepに書く
+ */
 
 === Step 2: 
 #figure(
-  image("./A-B-X_contradiction_conclution.svg", width: 50%),
-  caption: "Venn Diagram Representation of Contradiction"
+  image("./A-B-X_contradiction_step2.svg", width: 50%),
 )
+- Deductive Closure に ⊥ があった場合
 
 
 === Step 3:
 
+#figure(
+  image("./A-B-X_contradiction_step3.svg", width: 80%),
+)
+- [¬χ] を消す
 
 
+=== Step 4:
+#figure(
+  image("./A-B-X_contradiction_step4.svg", width: 80%),
+)
+- χ を Deductive Closure に置く
+
+=== Step 5:
+#figure(
+  image("./A-B-X_contradiction_step5.svg", width: 80%),
+)
+- ⊥を消す
