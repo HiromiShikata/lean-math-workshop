@@ -130,12 +130,12 @@ $
   $rho$,
   $phi or psi$,
   rule(
-      $rho$,
-      rule(
-        $dots.v$,
-        $cancel([phi])^1$,
-      )
+    $rho$,
+    rule(
+      $dots.v$,
+      $cancel([phi])^1$,
     ),
+  ),
   rule(
     $rho$,
     rule(
