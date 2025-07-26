@@ -71,23 +71,21 @@ $
 ]
 
 === Step 1: Assume ¬χ in Set of Axioms
-#figure(image("./A-B-X_contradiction_step1.svg", width: 50%))
-- ¬χ を Set of Axioms に付け加える
+#figure(image("./A-B-X_contradiction_step1.svg", width: 50%),
+caption: [仮想世界]
+)
 
-=== Step 2:
-#figure(image("./A-B-X_contradiction_step2.svg", width: 50%))
-- Deductive Closure に ⊥ があった場合
-
-
-=== Step 3:
-
-#figure(image("./A-B-X_contradiction_step3.svg", width: 80%))
-- ⊥が出てきたので [¬χ] が居ないベン図に戻る
+=== Step 2: If ⊥ appears in Deductive Closure
+#figure(image("./A-B-X_contradiction_step2.svg", width: 50%,
+),
+caption: [仮想世界]
+)
 
 
-=== Step 4:
-#figure(image("./A-B-X_contradiction_step4.svg", width: 80%))
-- χ を Deductive Closure に置く
+=== Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
+#figure(image("./A-B-X_contradiction_step3.svg", width: 80%),
+caption: [現実世界]
+)
 
 
 
@@ -103,16 +101,17 @@ $
   #prooftree(basic_and_introduce)
 ]
 
-=== Step 1: There are φ and ψ in Deductive Closure
+=== Step 1: If φ and ψ appear in Deductive Closure
 
 #figure(image("./A-B-X_and_introduce_step1.svg", width: 80%))
 
-=== Step 2: Introduce φ $and$ ψ in Deductive Closure
+=== Step 2: Then φ $and$ ψ appears in Deductive Closure
 #figure(image("./A-B-X_and_introduce_step2.svg", width: 80%))
 
 
 
 == ∧除去
+=== Right: φ appear
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -121,7 +120,14 @@ $
   ))
 ]
 
+==== Step 1: if φ $and$ ψ appears in Deductive Closure
+#figure(image("./A-B-X_and_remove_step1.svg", width: 80%))
 
+==== Step 2: Then φ and ψ appears in Deductive Closure
+
+#figure(image("./A-B-X_and_remove_step2.svg", width: 80%))
+
+=== Left: ψ appear
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -129,13 +135,6 @@ $
     $phi and psi$
   ))
 ]
-
-=== Step 1: There are φ $and$ ψ in Deductive Closure
-#figure(image("./A-B-X_and_remove_step1.svg", width: 80%))
-
-=== Step 2: Introduce φ or ψ in Deductive Closure
-
-#figure(image("./A-B-X_and_remove_step2.svg", width: 80%))
 
 
 
@@ -210,10 +209,10 @@ $
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
   gutter: 5pt,
-  [
+  [/* 
     #figure(
       image("./A-B-X_or_remove_step3-phi.svg", width: 100%),
-    )
+    ) */
   ]
 )
 
