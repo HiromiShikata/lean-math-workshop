@@ -34,6 +34,9 @@ $
 $
 - ⊥ はどこにいるかわからない
 - ⊥ は Set of Axioms も Deductive Closure もAもBもXも可能
+- [仮定]を含むベン図は仮想の世界で、[仮定]がないベン図は現実の世界
+
+
 
 #figure(
   image("./A-B-X.svg", width: 50%),
@@ -169,18 +172,48 @@ $
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
   gutter: 5pt,
-  [],
   [
     #figure(
       image("./A-B-X_or_remove_step1-phi.svg", width: 100%),
-    ),
+    )
   ],    [
         #figure(
       image("./A-B-X_or_remove_step1-psi.svg", width: 100%),
     )
 
-  ],   
+  ]
 )
 
 === Step 2: If there is ρ 
-TODO または除去のStep2の画像作成から
+#grid(
+  columns: (auto, auto, auto),
+  rows: (auto, auto, auto),
+  gutter: 5pt,
+  [
+    #figure(
+      image("./A-B-X_or_remove_step2-phi_or_psi.svg", width: 100%),
+    )
+  ], [
+ 
+    #figure(
+      image("./A-B-X_or_remove_step2-phi.svg", width: 100%),
+    )
+  ], [
+        #figure(
+      image("./A-B-X_or_remove_step2-psi.svg", width: 100%),
+    )
+  ],   
+)
+
+=== Step 3:  
+#grid(
+  columns: (auto, auto, auto),
+  rows: (auto, auto, auto),
+  gutter: 5pt,
+  [
+    #figure(
+      image("./A-B-X_or_remove_step3-phi.svg", width: 100%),
+    )
+  ]
+)
+
