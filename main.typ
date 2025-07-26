@@ -1,7 +1,7 @@
 
 #let project(title: "", authors: (), body) = {
   set document(author: authors, title: title)
-  set page(
+  set page( 
     paper: "a4",
     margin: (x: 2.5cm, y: 3cm),
   )
@@ -59,7 +59,9 @@ $
   ),
 )
 
+
 #align(center)[
+  
   *基本的な背理法の導出図*
   #v(1em)
   #prooftree(basic_raa)
@@ -98,25 +100,37 @@ $
   #prooftree(basic_and_introduce)
 ]
 
+=== Step 1: There are φ and ψ in Deductive Closure
+
 #figure(image("./A-B-X_and_introduce_step1.svg", width: 80%))
 
+=== Step 2: Introduce φ $and$ ψ in Deductive Closure
 #figure(image("./A-B-X_and_introduce_step2.svg", width: 80%))
 
 
 
 == ∧除去
+#align(center)[
+  #v(1em)
+  #prooftree(rule(
+    $phi$,
+    $phi and psi$
+  ))
+]
 
-#let basic_and_remove = rule(
-  $phi quad psi$,
-  $phi and psi$,
-)
 
 #align(center)[
   #v(1em)
-  #prooftree(basic_and_remove)
+  #prooftree(rule(
+    $psi$,
+    $phi and psi$
+  ))
 ]
 
+=== Step 1: There are φ $and$ ψ in Deductive Closure
 #figure(image("./A-B-X_and_remove_step1.svg", width: 80%))
+
+=== Step 2: Introduce φ or ψ in Deductive Closure
 
 #figure(image("./A-B-X_and_remove_step2.svg", width: 80%))
 
@@ -149,18 +163,24 @@ $
   #v(1em)
   #prooftree(basic_or_remove)
 ]
-TODO または除去の画像作成から
-/*
-#figure(
-  image("./A-B-X_and_remove_step1.svg", width: 80%),
+
+=== Step 1: Assume φ or ψ in Set of Axioms
+#grid(
+  columns: (auto, auto, auto),
+  rows: (auto, auto, auto),
+  gutter: 5pt,
+  [],
+  [
+    #figure(
+      image("./A-B-X_or_remove_step1-phi.svg", width: 100%),
+    ),
+  ],    [
+        #figure(
+      image("./A-B-X_or_remove_step1-psi.svg", width: 100%),
+    )
+
+  ],   
 )
 
-#figure(
-  image("./A-B-X_and_remove_step2.svg", width: 80%),
-) */
-
-
-
-
-
-
+=== Step 2: If there is ρ 
+TODO または除去のStep2の画像作成から
