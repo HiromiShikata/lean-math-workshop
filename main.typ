@@ -110,8 +110,7 @@ caption: [現実世界]
 
 
 
-== ∧除去
-=== Right: φ appear
+== ∧除去 Right: φ appear
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -120,14 +119,17 @@ caption: [現実世界]
   ))
 ]
 
-==== Step 1: if φ $and$ ψ appears in Deductive Closure
+=== Step 1: if φ $and$ ψ appears in Deductive Closure
 #figure(image("./A-B-X_and_remove_step1.svg", width: 80%))
 
-==== Step 2: Then φ and ψ appears in Deductive Closure
+=== Step 2: Then φ appears in Deductive Closure
 
-#figure(image("./A-B-X_and_remove_step2.svg", width: 80%))
+#figure(image("./A-B-X_and_remove_right_step2.svg", width: 80%))
 
-=== Left: ψ appear
+
+
+
+== ∧除去 Left: ψ appear
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -135,6 +137,15 @@ caption: [現実世界]
     $phi and psi$
   ))
 ]
+
+=== Step 1: if φ $and$ ψ appears in Deductive Closure
+#figure(image("./A-B-X_and_remove_step1.svg", width: 80%))
+
+=== Step 2: Then ψ appears in Deductive Closure
+
+#figure(image("./A-B-X_and_remove_left_step2.svg", width: 80%))
+
+
 
 
 
@@ -173,17 +184,25 @@ caption: [現実世界]
   gutter: 5pt,
   [
     #figure(
+      image("./A-B-X_or_remove_step1-empty.svg", width: 100%),
+      caption: [現実世界]
+    )
+  ],
+  [
+    #figure(
       image("./A-B-X_or_remove_step1-phi.svg", width: 100%),
+      caption: [仮想世界]
     )
   ],    [
         #figure(
       image("./A-B-X_or_remove_step1-psi.svg", width: 100%),
+      caption: [仮想世界]
     )
 
   ]
 )
 
-=== Step 2: If there is ρ 
+=== Step 2: If φ∨ψ appear in Deductive Closure in real world and ρ appear in Deductive Closure in both virtual worlds 
 #grid(
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
@@ -191,28 +210,32 @@ caption: [現実世界]
   [
     #figure(
       image("./A-B-X_or_remove_step2-phi_or_psi.svg", width: 100%),
+      caption: [現実世界]
     )
   ], [
  
     #figure(
       image("./A-B-X_or_remove_step2-phi.svg", width: 100%),
+      caption: [仮想世界]
     )
   ], [
         #figure(
       image("./A-B-X_or_remove_step2-psi.svg", width: 100%),
+      caption: [仮想世界]
     )
   ],   
 )
 
-=== Step 3:  
+=== Step 3: Then ρ appear in Deductive Closure in real world
 #grid(
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
   gutter: 5pt,
-  [/* 
+  [
     #figure(
-      image("./A-B-X_or_remove_step3-phi.svg", width: 100%),
-    ) */
+      image("./A-B-X_or_remove_step3.svg", width: 100%),
+      caption: [現実世界]
+    )
   ]
 )
 
