@@ -44,51 +44,6 @@ $
 )
 
 
-
-== 背理法
-
-
-#let basic_raa = rule(
-  name: $1 text("(背理法)")$,
-  $chi$,
-  rule(
-    name: $$,
-    $bot$,
-    rule(
-      name: $$,
-      $dots.v$,
-      $cancel([not chi])^1$,
-    ),
-  ),
-)
-
-
-#align(center)[
-  
-  *基本的な背理法の導出図*
-  #v(1em)
-  #prooftree(basic_raa)
-]
-
-=== Step 1: Assume ¬χ in Set of Axioms
-#figure(image("./A-B-X_contradiction_step1.svg", width: 50%),
-caption: [仮想世界]
-)
-
-=== Step 2: If ⊥ appears in Deductive Closure
-#figure(image("./A-B-X_contradiction_step2.svg", width: 50%,
-),
-caption: [仮想世界]
-)
-
-
-=== Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
-#figure(image("./A-B-X_contradiction_step3.svg", width: 80%),
-caption: [現実世界]
-)
-
-
-
 == ∧導入
 
 #let basic_and_introduce = rule(
@@ -110,7 +65,7 @@ caption: [現実世界]
 
 
 
-== ∧除去 Right: φ appear
+== ∧除去 Right
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -129,7 +84,7 @@ caption: [現実世界]
 
 
 
-== ∧除去 Left: ψ appear
+== ∧除去 Left
 #align(center)[
   #v(1em)
   #prooftree(rule(
@@ -145,7 +100,39 @@ caption: [現実世界]
 
 #figure(image("./A-B-X_and_remove_left_step2.svg", width: 80%))
 
+== ∨導入 Right
+#align(center)[
+  #v(1em)
+  #prooftree(rule(
+    $phi or psi$,
+    $phi$
+  ))
+]
 
+=== Step 1: if φ appears in Deductive Closure
+#figure(image("./A-B-X_or_introduce_right_step1.svg", width: 80%))
+
+=== Step 2: Then φ ∨ ψ appears in Deductive Closure
+
+#figure(image("./A-B-X_or_introduce_right_step2.svg", width: 80%))
+
+
+
+== ∨導入 Left
+#align(center)[
+  #v(1em)
+  #prooftree(rule(
+    $psi or phi$,
+    $phi$,
+  ))
+]
+
+=== Step 1: if φ appears in Deductive Closure
+#figure(image("./A-B-X_or_introduce_left_step1.svg", width: 80%))
+
+=== Step 2: Then ψ∨φ appears in Deductive Closure
+
+#figure(image("./A-B-X_or_introduce_left_step2.svg", width: 80%))
 
 
 
@@ -239,3 +226,70 @@ caption: [現実世界]
   ]
 )
 
+
+== →導入
+
+#align(center)[
+  #v(1em)
+  #prooftree(
+   rule(
+    name: $1 $,
+    $phi -> psi$,
+    rule(
+      $psi$,
+      rule(
+      $dots.v$,
+        $cancel([phi])^1$,
+      )
+    ),
+  )
+
+  )
+]
+
+
+
+
+
+== 背理法
+
+
+#let basic_raa = rule(
+  name: $1 text("(背理法)")$,
+  $chi$,
+  rule(
+    $bot$,
+    rule(
+      name: $$,
+      $dots.v$,
+      $cancel([not chi])^1$,
+    ),
+  ),
+)
+
+
+#align(center)[
+
+  *基本的な背理法の導出図*
+  #v(1em)
+  #prooftree(basic_raa)
+]
+
+=== Step 1: Assume ¬χ in Set of Axioms
+#figure(image("./A-B-X_contradiction_step1.svg", width: 50%),
+caption: [仮想世界]
+)
+
+=== Step 2: If ⊥ appears in Deductive Closure
+#figure(image("./A-B-X_contradiction_step2.svg", width: 50%,
+),
+caption: [仮想世界]
+)
+
+
+=== Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
+#figure(image("./A-B-X_contradiction_step3.svg", width: 80%),
+caption: [現実世界]
+)
+
+TODO -> 導入のvenn図作成から
