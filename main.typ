@@ -378,20 +378,48 @@ caption: [現実世界]
 ]
 
 === Step 1: Assume ¬χ in Set of Axioms
-#figure(image("./A-B-X_contradiction_step1.svg", width: 50%),
+#figure(image("./A-B-X_proof_of_contradiction_step1.svg", width: 50%),
 caption: [仮想世界]
 )
 
 === Step 2: If ⊥ appears in Deductive Closure
-#figure(image("./A-B-X_contradiction_step2.svg", width: 50%,
+#figure(image("./A-B-X_proof_of_contradiction_step2.svg", width: 50%,
 ),
 caption: [仮想世界]
 )
 
 
 === Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
-#figure(image("./A-B-X_contradiction_step3.svg", width: 80%),
+#figure(image("./A-B-X_proof_of_contradiction_step3.svg", width: 80%),
 caption: [現実世界]
 )
 
+
+
+=== 矛盾
+
+#align(center)[
+  #v(1em)
+  #prooftree(
+   rule(
+    $phi$,
+      $bot$,
+  )
+  )
+]
+
+
+=== Step 1: Appear ¬φ and φ in Deductive Closure
+#figure(image("./A-B-X_not_remove_step1.svg", width: 50%),
+caption: [現実世界]
+)
+
+=== Step 2: Then ⊥ appears in Deductive Closure in real world
+#figure(image("./A-B-X_not_remove_step2.svg", width: 50%),
+caption: [現実世界]
+)
+
+
+
 TODO -> 導入のvenn図作成から
+
