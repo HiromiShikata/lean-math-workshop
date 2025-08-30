@@ -227,6 +227,7 @@ $
 )
 
 
+
 == →導入
 
 #align(center)[
@@ -247,6 +248,45 @@ $
   )
 ]
 
+
+=== Step 1: Assume φ in Deductive Closure
+#figure(image("./A-B-X_implecation_introduce_step1.svg", width: 50%),
+caption: [仮想世界]
+)
+
+=== Step 2: If ψ appears in Deductive Closure in virtual world
+#figure(image("./A-B-X_implecation_introduce_step2.svg", width: 50%),
+caption: [仮想世界]
+)
+=== Step 3: Then φ→ψ appears in Deductive Closure in real world
+#figure(image("./A-B-X_implecation_introduce_step3.svg", width: 50%),
+caption: [現実世界]
+)
+
+
+
+== →除去
+
+#align(center)[
+  #v(1em)
+  #prooftree(
+   rule(
+    $psi$,
+      $phi -> psi quad phi$,
+     )
+  )
+]
+
+
+=== Step 1: Appear φ→ψ and φ in Deductive Closure
+#figure(image("./A-B-X_implecation_remove_step1.svg", width: 50%),
+caption: [現実世界]
+)
+
+=== Step 2: Then ψ appears in Deductive Closure in real world
+#figure(image("./A-B-X_implecation_remove_step2.svg", width: 50%),
+caption: [現実世界]
+)
 
 
 
