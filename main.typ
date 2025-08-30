@@ -409,13 +409,13 @@ caption: [現実世界]
 ]
 
 
-=== Step 1: Appear ¬φ and φ in Deductive Closure
-#figure(image("./A-B-X_not_remove_step1.svg", width: 50%),
+=== Step 1: If ⊥ appears in Deductive Closure
+#figure(image("./A-B-X_contradiction_step1.svg", width: 50%),
 caption: [現実世界]
 )
 
-=== Step 2: Then ⊥ appears in Deductive Closure in real world
-#figure(image("./A-B-X_not_remove_step2.svg", width: 50%),
+=== Step 2: Then logical formula φ appears in Deductive Closure in real world
+#figure(image("./A-B-X_contradiction_step2.svg", width: 50%),
 caption: [現実世界]
 )
 
