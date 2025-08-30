@@ -291,6 +291,68 @@ caption: [現実世界]
 
 
 
+== ¬導入
+
+#align(center)[
+  #v(1em)
+  #prooftree(
+   rule(
+    name: $1 $,
+    $not phi$,
+    rule(
+      $bot$,
+      rule(
+      $dots.v$,
+        $cancel([phi])^1$,
+      )
+    ),
+  )
+  )
+]
+
+
+=== Step 1: Assume φ in Deductive Closure
+#figure(image("./A-B-X_not_introduce_step1.svg", width: 50%),
+caption: [仮想世界]
+)
+
+=== Step 2: If ⊥ appears in Deductive Closure in virtual world
+#figure(image("./A-B-X_not_introduce_step2.svg", width: 50%),
+caption: [仮想世界]
+)
+=== Step 3: Then ¬φ appears in Deductive Closure in real world
+#figure(image("./A-B-X_not_introduce_step3.svg", width: 50%),
+caption: [現実世界]
+)
+
+
+
+== ¬除去
+
+#align(center)[
+  #v(1em)
+  #prooftree(
+   rule(
+    $bot$,
+      $not phi quad phi$,
+     )
+  )
+]
+
+
+=== Step 1: Appear ¬φ and φ in Deductive Closure
+#figure(image("./A-B-X_not_remove_step1.svg", width: 50%),
+caption: [現実世界]
+)
+
+=== Step 2: Then ⊥ appears in Deductive Closure in real world
+#figure(image("./A-B-X_not_remove_step2.svg", width: 50%),
+caption: [現実世界]
+)
+
+
+
+
 == 背理法
 
 
