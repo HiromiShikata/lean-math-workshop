@@ -164,7 +164,7 @@ $
   #prooftree(basic_or_remove)
 ]
 
-=== Step 1: Assume φ or ψ in Set of Axioms
+=== Step 1: Assume φ or ψ in Deductive Closure
 #grid(
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
@@ -377,7 +377,7 @@ caption: [現実世界]
   #prooftree(basic_raa)
 ]
 
-=== Step 1: Assume ¬χ in Set of Axioms
+=== Step 1: Assume ¬χ in Deductive Closure
 #figure(image("./A-B-X_proof_of_contradiction_step1.svg", width: 50%),
 caption: [仮想世界]
 )

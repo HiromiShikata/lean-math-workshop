@@ -6,8 +6,6 @@
   <text x="200" y="75" font-size="24" text-anchor="middle" font-weight="bold">Deductive Closure</text>
   <text x="120" y="160" font-size="16" text-anchor="middle">ρ</text>
   
-  <circle cx="200" cy="150" r="60" fill="#fff" stroke="#333" stroke-width="2"/>
-  <text x="200" y="115" font-size="24" text-anchor="middle" font-weight="bold">Set of Axioms</text>
   <text x="180" y="160" font-size="16" text-anchor="middle">[φ]</text>
   
   
