@@ -421,5 +421,36 @@ caption: [現実世界]
 
 
 
-TODO -> 導入のvenn図作成から
+
+== ∀ 導入
+
+
+
+#align(center)[
+  #prooftree(rule(
+              $forall x phi$,
+               $phi [ x := y ]$
+             )
+  )
+]
+
+=== Step 1: Assume ¬χ in Deductive Closure
+#figure(image("./A-B-X_proof_of_contradiction_step1.svg", width: 50%),
+caption: [仮想世界]
+)
+
+=== Step 2: If ⊥ appears in Deductive Closure
+#figure(image("./A-B-X_proof_of_contradiction_step2.svg", width: 50%,
+),
+caption: [仮想世界]
+)
+
+
+=== Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
+#figure(image("./A-B-X_proof_of_contradiction_step3.svg", width: 80%),
+caption: [現実世界]
+)
+
+
+TODO　∀導入のvenn図作成から
 
