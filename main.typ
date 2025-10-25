@@ -1,7 +1,7 @@
 
 #let project(title: "", authors: (), body) = {
   set document(author: authors, title: title)
-  set page( 
+  set page(
     paper: "a4",
     margin: (x: 2.5cm, y: 3cm),
   )
@@ -189,7 +189,7 @@ $
   ]
 )
 
-=== Step 2: If φ∨ψ appear in Deductive Closure in real world and ρ appear in Deductive Closure in both virtual worlds 
+=== Step 2: If φ∨ψ appear in Deductive Closure in real world and ρ appear in Deductive Closure in both virtual worlds
 #grid(
   columns: (auto, auto, auto),
   rows: (auto, auto, auto),
@@ -200,7 +200,7 @@ $
       caption: [現実世界]
     )
   ], [
- 
+
     #figure(
       image("./A-B-X_or_remove_step2-phi.svg", width: 100%),
       caption: [仮想世界]
@@ -210,7 +210,7 @@ $
       image("./A-B-X_or_remove_step2-psi.svg", width: 100%),
       caption: [仮想世界]
     )
-  ],   
+  ],
 )
 
 === Step 3: Then ρ appear in Deductive Closure in real world
@@ -424,33 +424,25 @@ caption: [現実世界]
 
 == ∀ 導入
 
-
-
 #align(center)[
   #prooftree(rule(
-              $forall x phi$,
+              $forall (x ,phi)$,
                $phi [ x := y ]$
              )
   )
 ]
 
-=== Step 1: Assume ¬χ in Deductive Closure
-#figure(image("./A-B-X_proof_of_contradiction_step1.svg", width: 50%),
-caption: [仮想世界]
+=== Step 1 If $phi [ x := y ] $ appears in Deductive Closure
+#figure(image("./A-B-X_forall_introduce_step1.svg", width: 50%),
+caption: [現実世界]
 )
 
-=== Step 2: If ⊥ appears in Deductive Closure
-#figure(image("./A-B-X_proof_of_contradiction_step2.svg", width: 50%,
+=== Step 2: Then ∀(x,φ) appears in Deductive Closure
+#figure(image("./A-B-X_forall_introduce_step2.svg", width: 50%,
 ),
-caption: [仮想世界]
-)
-
-
-=== Step 3: Then [¬χ] and ⊥ disappear, and χ appears in Deductive Closure
-#figure(image("./A-B-X_proof_of_contradiction_step3.svg", width: 80%),
 caption: [現実世界]
 )
 
 
-TODO　∀導入のvenn図作成から
+TODO　https://github.com/HiromiShikata/lean-math-workshop/blob/0bf8e5c39f763ecb54dc8cafdd4bb95e41f91240/mathematical_logic_kashimaryo_test.py#L367 をリンクとして∀導入に追加するところから
 

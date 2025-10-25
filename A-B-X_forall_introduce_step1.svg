@@ -1,0 +1,9 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="150" r="140" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="200" y="35" font-size="24" text-anchor="middle" font-weight="bold">Set of Logical Fomulas</text>
+
+  <circle cx="200" cy="150" r="100" fill="#fff" stroke="#333" stroke-width="2"/>
+  <text x="200" y="75" font-size="24" text-anchor="middle" font-weight="bold">Deductive Closure</text>
+  <text x="160" y="120" font-size="16" text-anchor="middle">φ [ x := y ]</text>
+
+</svg>

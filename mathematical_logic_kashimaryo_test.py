@@ -366,12 +366,16 @@ def test_is_no_vioration_of_nested_quantifier():
 
 def test_is_substitution_possible():
     from mathematical_logic_kashimaryo import is_substitution_possible
+    assert is_substitution_possible('=(a,1)', 'a', '+(1,a)') == True
     assert is_substitution_possible('∀(y,=(a,1))', 'a', '1') == True
+    assert is_substitution_possible('∀(y,=(a,1))', 'a', '2') == True
     assert is_substitution_possible('∀(y,A)', 'a', '1') == True
     assert is_substitution_possible('∀(y,=(a,1))', 'a', '+(1,a)') == True
     # すでに束縛されている場合はそもそも代入しないから式に変化がないので代入可能
     assert is_substitution_possible('∀(a,=(a,1))', 'a', '+(1,a)') == True
     assert is_substitution_possible('∀(a,=(b,1))', 'b', '+(1,a)') == False
+    assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(0,a)') == False
+    assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(1,a)') == False
     assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '1') == True
     assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'b', '1') == True
     assert is_substitution_possible('∀(a,∀(b,=(b,1)))', 'b', '1') == True
