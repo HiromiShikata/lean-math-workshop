@@ -443,6 +443,43 @@ caption: [現実世界]
 caption: [現実世界]
 )
 
+=== 代入とは
+==== 説明に使っていい名詞
+- Logical formula
+- Term
+- Variable
+- Bound variable
 
-TODO　https://github.com/HiromiShikata/lean-math-workshop/blob/0bf8e5c39f763ecb54dc8cafdd4bb95e41f91240/mathematical_logic_kashimaryo_test.py#L367 をリンクとして∀導入に追加するところから
+==== 説明に使っていい動詞
+- 代入する
 
+==== 代入可能性 = 代入の制限
+- (Logical formula の Bound variable)  を (代入する Term) に含むことはできない
+
+==== 代入のルール
+- Logical formula の Variable に Term を代入する時、Bound variable には代入しない
+
+==== 具体例
+https://github.com/HiromiShikata/lean-math-workshop/blob/0bf8e5c39f763ecb54dc8cafdd4bb95e41f91240/mathematical_logic_kashimaryo_test.py#L367
+
+
+TODO 代入可能性が鹿嶋先生の定義より狭くなってしまっている
+-> 正規表現は使えないか
+-> 使えるかもしれないので検証を増やすところから
+```
+regex
+^([∀∃]\([a-z]+,(?:[a-z]+|=\([a-z]+,[a-z0-9]+\)|(?1))\))$
+^[∀∃]\([a-z],([a-z]|=\([a-z0-9],[a-z0-9]\)|[∀∃]\([a-z],\g<1>\))\)$
+test
+∀(a,∀(a,∀(a,=(a,b))))
+∀(a,∀(a,=(a,b)))
+∀(a,=(a,b))
+∀(a,=(a,b))
+∀(a,∀(b,c))
+∀(a,∀(b,=(c,1)))
+∀(a,b)
+∃(a,b)
+
+
+
+```
