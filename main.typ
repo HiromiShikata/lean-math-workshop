@@ -454,7 +454,8 @@ caption: [現実世界]
 - 代入する
 
 ==== 代入可能性 = 代入の制限
-- (Logical formula の Bound variable)  を (代入する Term) に含むことはできない
+- (代入される変数) TODO を (代入される変数にとって有効なBound variable) という
+- (Logical formula の ((代入される変数) の左側にあり, 最初から(代入される変数)との間にある開きカッコの数が閉じカッコより多い Bound variable)) を (代入する Term) に含むことはできない
 - (代入されるVariable)
 
 ==== 代入のルール
@@ -469,8 +470,9 @@ https://github.com/HiromiShikata/lean-math-workshop/blob/0bf8e5c39f763ecb54dc8ca
 TODO 代入可能性が鹿嶋先生の定義より狭くなってしまっている
 今のままの定義では (...∀y(...x...)...∀a(...b...)...)の場合のbにyの代入ができないことになる
 -> 文章で代入の制限を書き直す
--> assert is_substitution_possible('∀(a,=(a,1))', 'b', '+(1,a)') == True になるはずだけどならなかった
-->
+-> けど正確な文章が難しいから(代入される変数にとっての有効なBound variable)という用語を先に定義する
+-> [DONE] assert is_substitution_possible('∀(b,∀(b,=(b,1)))', 'b', '+(1,a)') == True になるはずだけどならなかった
+-> [DONE] ネストした quantifier を許可していいか
 
 
 -> is_no_vioration_of_nested_quantifier のネストした quantifier を許可していいのかを考えるところから

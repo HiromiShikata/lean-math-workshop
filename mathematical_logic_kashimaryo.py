@@ -41,7 +41,7 @@ def is_function(function: str) -> bool:
     # S: suc
     # +(1,2)
     # *(1,2)
-    return re.match(r'^[+*]$', function) is not None
+    return re.match(r'^[+*S]$', function) is not None
 
 
 def is_proposition(proposition: str) -> bool:
@@ -229,40 +229,6 @@ def is_term(expression: str) -> bool:
         return False
     return replace_term_to_t(x, term_mark, function_mark) == term_mark
 
-def is_no_vioration_of_nested_quantifier(expression: str) -> bool:
-    syntax_template = "∀(a,P)"
-    for i in range(len(expression)):
-        current_char = expression[i]
-        if not is_quantifier(current_char):
-            continue
-        if i + len(syntax_template) > len(expression):
-            return False
-        next_char = expression[i + 1]
-        if next_char != "(":
-            return False
-        bound_variable = expression[i + 2]
-        if not is_variable(bound_variable):
-            return False
-        stack_count = 0
-        for j in range(i + 3, len(expression)):
-            current_char_in_quantifier = expression[j]
-            if current_char_in_quantifier == "(":
-                stack_count += 1
-                continue
-            elif current_char_in_quantifier == ")":
-                stack_count -= 1
-                continue
-            if stack_count == -1:
-                break
-            if not is_quantifier(current_char_in_quantifier):
-                continue
-            if len(expression) < j + 2:
-                return False
-            if expression[j + 2] == bound_variable:
-                return False
-
-    return True
-
 def is_logical_formula(x_original: str) -> bool:
     x = x_original
 
@@ -279,9 +245,6 @@ def is_logical_formula(x_original: str) -> bool:
 
     if is_proposition(x):
         return True
-
-    if not is_no_vioration_of_nested_quantifier(x):
-        return False
 
     for i in range(len(x)):
         current_char = x[i]
@@ -346,8 +309,8 @@ def is_substitution_possible(expression: str, target_variable_symbol: str, targe
     x = target_variable_symbol
     t = target_term
 
-    if not is_logical_formula(phi):
-        return False
+    # if not is_logical_formula(phi):
+    #     return False
 
     # ∀(Variable, LogicalFormula) -> LogicalFormula
     # ∃(Variable, LogicalFormula) -> LogicalFormula

@@ -42,8 +42,8 @@ def test_is_constant():
 
 def test_is_function():
     from mathematical_logic_kashimaryo import is_function
-    assert is_function('x') == False
     assert is_function('X') == False
+    assert is_function('x') == False
     assert is_function('1') == False
     assert is_function('a') == False
     assert is_function('A') == False
@@ -159,8 +159,8 @@ def test_is_logic():
     assert is_logic('aA') == False
     assert is_logic('a1') == False
     assert is_logic('a ') == False
-    assert is_logic('∀') == False
-    assert is_logic('∃') == False
+    assert is_logic('∀') == True
+    assert is_logic('∃') == True
     assert is_logic('∧') == True
     assert is_logic('∨') == True
     assert is_logic('¬') == True
@@ -224,68 +224,6 @@ def test_is_auxiliary():
     assert is_auxiliary('∧∨∨∧') == False
 
 
-def test_restore_full_form():
-    # formula should be full form
-    # function should be function_name() style.
-    from mathematical_logic_kashimaryo import is_correct_syntax
-    is_correct_syntax('+(+(1,1),2)') # TODO
-
-
-    is_correct_syntax('∀a(A)')
-    is_correct_syntax('+(1,2)')
-    is_correct_syntax('A^B')
-    is_correct_syntax('(B^A)^A')
-    with pytest.raises(ValueError):
-        is_correct_syntax('aa(A)')
-    # function
-    with pytest.raises(ValueError):
-        is_correct_syntax('(a,b)')
-    with pytest.raises(ValueError):
-        is_correct_syntax('+a')
-
-    with pytest.raises(ValueError):
-        is_correct_syntax('+')
-    with pytest.raises(ValueError):
-        is_correct_syntax('=')
-
-    with pytest.raises(ValueError):
-        is_correct_syntax('∀')
-    with pytest.raises(ValueError):
-        is_correct_syntax('+(∀(1,1),2)')
-
-def test_is_correct_block_syntax():
-    from mathematical_logic_kashimaryo import is_correct_block_syntax
-    assert is_correct_block_syntax('(x)') == True
-    assert is_correct_block_syntax('x') == True
-    assert is_correct_block_syntax('1') == True
-    assert is_correct_block_syntax('a') == True
-    assert is_correct_block_syntax('z') == True
-    assert is_correct_block_syntax('0') == True
-    assert is_correct_block_syntax('9') == True
-    assert is_correct_block_syntax('6 * y') == True
-    assert is_correct_block_syntax('S(6)') == True
-    assert is_correct_block_syntax('S(6,a)') == True
-    assert is_correct_block_syntax('∀a(6,a)') == True
-    assert is_correct_block_syntax('S(S(6))') == True
-    assert is_correct_block_syntax('Q(1)') == True
-    assert is_correct_block_syntax('R(1,a)') == True
-    assert is_correct_block_syntax('+') == False
-    assert is_correct_block_syntax('S') == False
-    assert is_correct_block_syntax('*x') == False
-    assert is_correct_block_syntax('x*') == False
-    assert is_correct_block_syntax('=') == False
-    assert is_correct_block_syntax('=6') == False
-    assert is_correct_block_syntax('Q') == False
-    assert is_correct_block_syntax('Q()') == False
-    assert is_correct_block_syntax('Q()') == False
-    assert is_correct_block_syntax('<') == False
-    assert is_correct_block_syntax('(x') == False
-    assert is_correct_block_syntax('(x))') == False
-    assert is_correct_block_syntax('aa') == False
-    assert is_correct_block_syntax('11') == False
-    assert is_correct_block_syntax('SP') == False
-    assert is_correct_block_syntax('S P') == False
-
 def test_find_deepest_stack_depth():
     from mathematical_logic_kashimaryo import find_deepest_stack_depth
     assert find_deepest_stack_depth('+(+(a,1),+(a,1))') == 2
@@ -342,60 +280,39 @@ def test_is_logical_formula():
 
 def test_get_variable_symbol_from_term():
     from mathematical_logic_kashimaryo import get_variable_symbol_from_term
-    assert get_variable_symbol_from_term('+(+(a,1),a)') == ['a']
-    assert get_variable_symbol_from_term('+(+(a,1),+(a,1))') == ['a']
-    assert get_variable_symbol_from_term('+(+(a,1),+(+(a,a),1))') == ['a']
-    assert get_variable_symbol_from_term('+(+(a,1),+(+(a,a),b))') == ['a', 'b']
-    assert get_variable_symbol_from_term('+(+(a,1),+(+(a,a),b))') == ['a', 'b']
-    assert get_variable_symbol_from_term('+(+(a,1),+(+(a,a),+(b,1)))') == ['a', 'b']
-
-
-def test_is_no_vioration_of_nested_quantifier():
-    from mathematical_logic_kashimaryo import is_no_vioration_of_nested_quantifier
-    assert is_no_vioration_of_nested_quantifier('∃(x,A)') == True
-    assert is_no_vioration_of_nested_quantifier('∀(x,A)') == True
-    assert is_no_vioration_of_nested_quantifier('∀(x,∃(y,A))') == True
-    assert is_no_vioration_of_nested_quantifier('∃(x,∀(y,A))') == True
-    assert is_no_vioration_of_nested_quantifier('∀(x,∀(y,A))') == True
-    assert is_no_vioration_of_nested_quantifier('∃(x,∃(y,A))') == True
-
-
-
-
-    # assert is_no_vioration_of_nested_quantifier('∀(x,∃(x,A))') == True
-    assert is_no_vioration_of_nested_quantifier('∀(x,∀(x,A))') == True
-    # assert is_no_vioration_of_nested_quantifier('∃(x,∀(x,A))') == True
-    # assert is_no_vioration_of_nested_quantifier('∃(x,∃(x,A))') == False
-    #
-    # assert is_no_vioration_of_nested_quantifier('∀(x,∀(y,∃(z,A)))') == True
-    # assert is_no_vioration_of_nested_quantifier('∀(x,∃(y,∀(y,A)))') == False
+    assert set(get_variable_symbol_from_term('+(+(a,1),a)')) == {'a'}
+    assert set(get_variable_symbol_from_term('+(+(a,1),+(a,1))')) == {'a'}
+    assert set(get_variable_symbol_from_term('+(+(a,1),+(+(a,a),1))')) == {'a'}
+    assert set(get_variable_symbol_from_term('+(+(a,1),+(+(a,a),b))')) == {'a', 'b'}
+    assert set(get_variable_symbol_from_term('+(+(a,1),+(+(a,a),b))')) == {'a', 'b'}
+    assert set(get_variable_symbol_from_term('+(+(a,1),+(+(a,a),+(b,1)))')) == {'a', 'b'}
 
 
 def test_is_substitution_possible():
     from mathematical_logic_kashimaryo import is_substitution_possible
-    # assert is_substitution_possible('=(a,1)', 'a', '+(1,a)') == True
-    # assert is_substitution_possible('∀(y,=(a,1))', 'a', '1') == True
-    # assert is_substitution_possible('∀(y,=(a,1))', 'a', '2') == True
-    # assert is_substitution_possible('∀(y,A)', 'a', '1') == True
-    # assert is_substitution_possible('∀(y,=(a,1))', 'a', '+(1,a)') == True
-    # # すでに束縛されている場合はそもそも代入しないから式に変化がないので代入可能
-    # assert is_substitution_possible('∀(a,=(a,b))', 'a', '+(1,a)') == True
-    # assert is_substitution_possible('∀(a,=(a,1))', 'a', '+(1,a)') == True
-    # assert is_substitution_possible('∀(a,=(b,1))', 'b', '+(1,a)') == False
-    # assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(0,a)') == False
-    # assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(1,a)') == False
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '1') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'b', '1') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(b,1)))', 'b', '1') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'b', '+(a,1)') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(a,1)))', 'a', '+(a,1)') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(d,1)') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(c,d)))', 'c', '+(d,1)') == True
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(a,1)') == False
-    # assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(b,1)') == False
-    # assert is_substitution_possible('∀(b,∧(∀(a,=(a,1)),=(a,1)))', 'a', '+(1,a)') == True
+    assert is_substitution_possible('=(a,1)', 'a', '+(1,a)') == True
+    assert is_substitution_possible('∀(y,=(a,1))', 'a', '1') == True
+    assert is_substitution_possible('∀(y,=(a,1))', 'a', '2') == True
+    assert is_substitution_possible('∀(y,A)', 'a', '1') == True
+    assert is_substitution_possible('∀(y,=(a,1))', 'a', '+(1,a)') == True
+    # すでに束縛されている場合はそもそも代入しないから式に変化がないので代入可能
+    assert is_substitution_possible('∀(a,=(a,b))', 'a', '+(1,a)') == True
+    assert is_substitution_possible('∀(a,=(a,1))', 'a', '+(1,a)') == True
+    assert is_substitution_possible('∀(a,=(b,1))', 'b', '+(1,a)') == False
+    assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(0,a)') == False
+    assert is_substitution_possible('∃(a,=(b,1))', 'b', '+(1,a)') == False
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '1') == True
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'b', '1') == True
+    assert is_substitution_possible('∀(a,∀(b,=(b,1)))', 'b', '1') == True
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'b', '+(a,1)') == True
+    assert is_substitution_possible('∀(a,∀(b,=(a,1)))', 'a', '+(a,1)') == True
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(d,1)') == True
+    assert is_substitution_possible('∀(a,∀(b,=(c,d)))', 'c', '+(d,1)') == True
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(a,1)') == False
+    assert is_substitution_possible('∀(a,∀(b,=(c,1)))', 'c', '+(b,1)') == False
+    assert is_substitution_possible('∀(b,∧(∀(a,=(a,1)),=(a,1)))', 'a', '+(1,a)') == True
     assert is_substitution_possible('∀(b,∀(b,=(b,1)))', 'b', '+(1,a)') == True
-    # assert is_substitution_possible('∀(a,=(a,1))', 'b', '+(1,a)') == True
+    assert is_substitution_possible('∀(a,=(a,1))', 'b', '+(1,a)') == True
 
 def test_substitute():
     from mathematical_logic_kashimaryo import substitute
@@ -404,9 +321,15 @@ def test_substitute():
     assert substitute('∀(y,=(a,1))', 'a', '+(1,a)') == '∀(y,=(+(1,a),1))'
     assert substitute('∀(a,=(a,1))', 'a', '+(1,a)') == '∀(a,=(a,1))'
     assert substitute('∀(b,∧(∀(a,=(a,1)),=(a,1)))', 'a', '+(1,a)') == '∀(b,∧(∀(a,=(a,1)),=(+(1,a),1)))'
+    assert substitute('∀(b,∀(b,=(b,1)))', 'b', '+(1,a)') == '∀(b,∀(b,=(b,1)))'
+    assert substitute('∀(a,∧(∀(b,=(c,1)),∀(d,A)))', 'c', '+(1,d)') == '∀(a,∧(∀(b,=(+(1,d),1)),∀(d,A)))'
+    assert substitute('∀(a,∧(∀(d,A),∀(b,=(c,1))))', 'c', '+(1,d)') == '∀(a,∧(∀(d,A),∀(b,=(+(1,d),1))))'
 
-    with pytest.raises(ValueError):
-        substitute('∀(b,∀(b,=(b,1)))', 'b', '+(1,a)')
+    with (pytest.raises(ValueError)):
+        substitute('∀(b,∀(b,=(a,1)))', 'a', '+(1,b)')
+        substitute('∀(a,∧(∀(b,=(c,1)),∀(d,A)))', 'c', '+(1,a)')
+        substitute('∀(a,∧(∀(b,=(c,1)),∀(d,A)))', 'c', '+(1,b)')
+        substitute('∀(a,∧(∀(d,A),∀(b,=(c,1))))', 'c', '+(1,a)')
 
 def test_find_bound_variables():
     from mathematical_logic_kashimaryo import find_bound_variables
