@@ -338,3 +338,27 @@ def test_find_bound_variables():
     assert find_bound_variables('∀(b,∧(∀(a,=(a,1)),=(a,1)))',12) == ['a', 'b']
     assert find_bound_variables('∀(b,∧(∀(a,=(a,1)),=(+(1,a),1)))', 12) == ['a', 'b']
     assert find_bound_variables('∀(b,∧(∀(a,=(a,1)),=(a,1)))',20) == ['b']
+
+
+def test_is_bound_variable():
+    from mathematical_logic_kashimaryo import is_bound_variable
+    assert is_bound_variable('∀(a,=(a,1))',0,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',1,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',2,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',3,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',4,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',5,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',6,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',7,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',8,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',9,'a') == True
+    assert is_bound_variable('∀(a,=(a,1))',10,'a') == True
+    assert is_bound_variable('∀(a,P)',0,'a') == True
+    assert is_bound_variable('∀(a,P)',4,'a') == True
+    assert is_bound_variable('∀(a,P)',5,'a') == True
+
+
+    # 以下のテストケースも拡充必要
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',12,'b') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(+(1,a),1)))', 12,'b') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',20,'b') == True

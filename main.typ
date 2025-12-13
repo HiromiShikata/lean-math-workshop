@@ -454,9 +454,13 @@ caption: [現実世界]
 - 代入する
 
 ==== 代入可能性 = 代入の制限
-- (代入される変数) TODO を (代入される変数にとって有効なBound variable) という
+- (Logical formula φ) と (φ の Free variable $phi_x$) と (φ の Bound variable $phi_y$) に対して
+$phi_y$ が $phi_x$ の左側にあり $phi_y$ から $phi_x$ との間にある 開きカッコの数が閉じカッコより多い φ の Bound variable
+	- TODO 開きカッコの数が閉じカッコの数より多いことを Bound variableの定義にしてよいのかを python で確認
+を ($phi_x$ にとって有効なBound variable) という
 - (Logical formula の ((代入される変数) の左側にあり, 最初から(代入される変数)との間にある開きカッコの数が閉じカッコより多い Bound variable)) を (代入する Term) に含むことはできない
 - (代入されるVariable)
+- Free variable の左側にあり, 最初から(代入される変数)との間にある開きカッコの数が閉じカッコより多い Bound variable)) を (代入する Term) に含むことはできない
 
 ==== 代入のルール
 - Logical formula の Variable に Term を代入する時、Bound variable には代入しない
