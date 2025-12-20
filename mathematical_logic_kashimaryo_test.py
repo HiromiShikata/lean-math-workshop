@@ -357,8 +357,59 @@ def test_is_bound_variable():
     assert is_bound_variable('∀(a,P)',4,'a') == True
     assert is_bound_variable('∀(a,P)',5,'a') == True
 
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',5,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',6,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',12,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',16,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',17,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',25,'a') == False
 
-    # 以下のテストケースも拡充必要
-    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',12,'b') == True
-    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(+(1,a),1)))', 12,'b') == True
-    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),=(a,1)))',20,'b') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',0,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',5,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',6,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',16,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',17,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',18,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',28,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(a,=(a,1))))',29,'a') == False
+
+# $phi_y$ が $phi_x$ の左側にあり $phi_y$ の一つ前から $phi_x$ との間にある 開きカッコの数が閉じカッコより多い φ の Bound variable
+#     $phi_y$: 最初のa
+#     $phi_x$: 3番目のa
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',0,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',5,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',6,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',7,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',8,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',9,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',10,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',11,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',12,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',13,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',14,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',15,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',16,'a') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',17,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',18,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',28,'a') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',29,'a') == False
+
+
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',0,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',5,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',6,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',7,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',8,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',9,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',10,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',11,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',12,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',13,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',14,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',15,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',16,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',17,'c') == False
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',18,'c') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',28,'c') == True
+    assert is_bound_variable('∀(b,∧(∀(a,=(a,1)),∀(c,=(a,1))))',29,'c') == False
+

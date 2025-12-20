@@ -355,3 +355,39 @@ def substitute(expression: str, target_variable_symbol: str, target_term: str) -
     return phi
 
 
+
+def is_bound_variable(expression: str, target_index: int, target_variable_symbol: str) -> bool:
+
+    if is_quantifier(expression[target_index]):
+        if expression[target_index + 2] == target_variable_symbol:
+            return True
+    if target_index >= 1:
+        if is_quantifier(expression[target_index - 1]):
+            if expression[target_index + 1] == target_variable_symbol:
+                return True
+
+    for i in range(target_index + 1):
+        current_char = expression[i]
+        if not is_quantifier(current_char):
+            continue
+
+        if i + 2 >= len(expression):
+            continue
+
+        bound_var = expression[i + 2]
+        if bound_var != target_variable_symbol:
+            continue
+
+        open_count = 0
+        close_count = 0
+
+        for j in range(i, target_index):
+            if expression[j] == '(':
+                open_count += 1
+            elif expression[j] == ')':
+                close_count += 1
+
+        if open_count > close_count:
+            return True
+
+    return False
